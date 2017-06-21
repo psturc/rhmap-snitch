@@ -9,17 +9,16 @@ const app = express()
 
 const storagePath = "./data.json"
 const server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
-const server_ip_address = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1"
+const server_ip_address = process.env.OPENSHIFT_NODEJS_IP || "0.0.0.0"
 
 app.use(bodyParser.urlencoded({
   extended: true
 }))
 app.use(bodyParser.json())
 app.listen(server_port, server_ip_address, () => {
-  winston.info("Example app listening on port 8080!")
+  winston.info(`App is listening on ${server_ip_address}:${server_port}`)
 })
 app.set("view engine", "pug")
-
 
 
 app.get("/", (req, res) => {
