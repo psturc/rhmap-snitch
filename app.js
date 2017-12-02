@@ -7,7 +7,7 @@ const config = require("./lib/config")
 
 const app = express()
 
-const storagePath = "./data.json"
+const storagePath = process.env.CONFIG_FILE || "./data.json"
 const server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
 const server_ip_address = process.env.OPENSHIFT_NODEJS_IP || "0.0.0.0"
 
